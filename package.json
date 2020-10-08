@@ -1,6 +1,6 @@
 {
   "name": "zero-pkg-util",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "小明同学的工具包",
   "main": "dist/main.bundle.js",
   "scripts": {

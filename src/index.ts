@@ -1,7 +1,7 @@
-function test(a: number): void {
+export function test(a: number): void {
   console.log("aa===", a);
 }
 
-module.exports = {
-  test,
-};
+export function hello(a: number): void {
+  console.log("hello", a);
+}
