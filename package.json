@@ -1,9 +1,11 @@
 {
-  "name": "zero-util",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "zero-pkg-util",
+  "version": "1.0.1",
+  "description": "小明同学的工具包",
+  "main": "dist/main.bundle.js",
   "scripts": {
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,10 +13,18 @@
     "url": "git+https://github.com/NewTM/zero-util.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "小明同学 923727421@qq.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NewTM/zero-util/issues"
   },
-  "homepage": "https://github.com/NewTM/zero-util#readme"
+  "homepage": "https://github.com/NewTM/zero-util#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "ts-loader": "^8.0.4",
+    "typescript": "^4.0.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-merge": "^5.2.0"
+  }
 }
