@@ -2,10 +2,12 @@
   "name": "zero-pkg-util",
   "version": "1.0.5",
   "description": "小明同学的工具包",
-  "main": "dist/main.bundle.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "build": "tsc",
+    "publish": "tsc && npm publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,5 +28,6 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-merge": "^5.2.0"
-  }
+  },
+  "dependencies": {}
 }
