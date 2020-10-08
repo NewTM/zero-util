@@ -2,7 +2,7 @@
   // "include": [
   //   "./src"
   // ],
-  "exclude": ["node_modules", "webpack.*.js"],
+  "exclude": ["node_modules"],
   "include": ["src/**/*"],
   "compilerOptions": {
     "sourceMap": true,
@@ -18,7 +18,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     /* Disallow inconsistently-cased references to the same file. */
-    "strict": true,
+    "strict": true
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Basic Options */
