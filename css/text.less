@@ -1,0 +1,19 @@
+@import "./mixin/var.less";
+
+.text_center {
+    text-align: center;
+}
+
+
+ /*单行溢出*/
+ .text_clip {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+  /*多行溢出*/
+.text_clip_2{
+    .text_clip_double(3);
+}

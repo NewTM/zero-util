@@ -1,3 +1,4 @@
+
 /**
  * @Descripttion: 文字复制到设备的剪切板
  * @param {text} 要复制的文字
@@ -46,25 +47,25 @@ export function toggleScreen(bool: boolean): void {
     elem.webkitRequestFullScreen
       ? elem.webkitRequestFullScreen()
       : elem.mozRequestFullScreen
-      ? elem.mozRequestFullScreen()
-      : elem.msRequestFullscreen
-      ? elem.msRequestFullscreen()
-      : elem.requestFullScreen
-      ? elem.requestFullScreen()
-      : alert("浏览器不支持全屏");
+        ? elem.mozRequestFullScreen()
+        : elem.msRequestFullscreen
+          ? elem.msRequestFullscreen()
+          : elem.requestFullScreen
+            ? elem.requestFullScreen()
+            : alert("浏览器不支持全屏");
   } else {
     elem = parent.document;
     elem.webkitCancelFullScreen
       ? elem.webkitCancelFullScreen()
       : elem.mozCancelFullScreen
-      ? elem.mozCancelFullScreen()
-      : elem.cancelFullScreen
-      ? elem.cancelFullScreen()
-      : elem.msExitFullscreen
-      ? elem.msExitFullscreen()
-      : elem.exitFullscreen
-      ? elem.exitFullscreen()
-      : alert("切换失败,可尝试Esc退出");
+        ? elem.mozCancelFullScreen()
+        : elem.cancelFullScreen
+          ? elem.cancelFullScreen()
+          : elem.msExitFullscreen
+            ? elem.msExitFullscreen()
+            : elem.exitFullscreen
+              ? elem.exitFullscreen()
+              : alert("切换失败,可尝试Esc退出");
   }
 }
 
@@ -98,7 +99,7 @@ export function objToFormData(obj: Obj): FormData {
  * @param {delay} 延迟时间
  * @return: Function
  */
-export function _debounce(
+export function debounce(
   method: Function,
   delay: number,
   context: any
@@ -120,7 +121,7 @@ export function _debounce(
  * @param {context} 绑定的this值
  * @return: Function
  */
-export function _throller(
+export function throller(
   method: Function,
   delay: number,
   context: any
@@ -142,7 +143,7 @@ export function _throller(
  * @param {filename} 要创建的文件名
  * @return: file
  */
-export function _dataURLtoFile(dataurl: string, filename: string): File {
+export function dataURLtoFile(dataurl: string, filename: string): File {
   var arr = dataurl.split(","),
     mime = arr[0].match(/:(.*?);/)[1],
     bstr = atob(arr[1]),
@@ -160,7 +161,7 @@ export function _dataURLtoFile(dataurl: string, filename: string): File {
  * @param { 文件对象 } file
  * @return { Promise }
  */
-export function _fileToBase64(file: File): Promise<any> {
+export function fileToBase64(file: File): Promise<any> {
   if (Object.prototype.toString.call(file) !== "[object File]") {
     console.warn(`file 必须是 文件！ >>>${file}`);
     return;
@@ -266,4 +267,61 @@ export function getOsInfo(): string {
   return name;
 }
 
-var a: string = "123";
+
+
+//从服务端获取cookie
+export function getServerCookies(str: string): Obj {
+  if (!str) return
+  let res: Obj = {}
+  let arr = str.split(';');
+  let key, v;
+  arr.forEach(item => {
+    let obj = item.split('=');
+    key = obj[0].trim()
+    v = obj[1]
+    res[key] = v;
+  })
+  return res
+}
+
+
+
+/**
+ * @Descripttion: 文字复制到设备的剪切板
+ * @param {text} 要复制的文字
+ * @return: Boolean
+ */
+export function _copyToClipboard(text: string): boolean {
+  let textArea: HTMLTextAreaElement = document.createElement('textarea'),
+    isSuccess = false;
+
+  textArea.style.position = 'fixed';
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.width = '2em';
+  textArea.style.height = '2em';
+  textArea.style.padding = "0";
+  textArea.style.border = 'none';
+  textArea.style.outline = 'none';
+  textArea.style.boxShadow = 'none';
+  textArea.style.background = 'transparent';
+  textArea.value = text ? text : "";
+  document.body.appendChild(textArea);
+  if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) { //区分iPhone设备
+    window.getSelection().removeAllRanges(); //这段代码必须放在前面否则无效
+    let range = document.createRange();
+    // 选中需要复制的节点
+    range.selectNode(textArea);
+    // 执行选中元素
+    window.getSelection().addRange(range);
+    // 执行 copy 操作
+    isSuccess = document.execCommand('copy');
+    // 移除选中的元素
+    window.getSelection().removeAllRanges();
+  } else {
+    textArea.select();
+    isSuccess = document.execCommand("Copy");
+  }
+  document.body.removeChild(textArea);
+  return isSuccess;
+}
