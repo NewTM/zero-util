@@ -85,7 +85,15 @@ export function getTimeDiff(time: Date, date2 = new Date()): Obj {
 }
 
 
-
+/**
+ * 返回今天加上 dayNumber 天后的时间
+ * @param dayNumber 天
+ */
+export function nowTimeAddDay(dayNumber: number): Date {
+    let day = new Date()
+    day.setDate(day.getDate() + dayNumber)
+    return day
+}
 
 /**
  * 获取时间差值文字显示
