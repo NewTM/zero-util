@@ -1,4 +1,4 @@
-
+import { isArray } from './valid';
 /**
  * @Descripttion: 文字复制到设备的剪切板
  * @param {text} 要复制的文字
@@ -38,6 +38,13 @@ export function copyToClipboard(text: string): boolean {
   document.body.removeChild(textArea);
   return isSuccess;
 }
+
+// react jsx 函数数组数据渲染
+export function renderArray(arr: any[], func: (item: Obj, index: number) => any) {
+  return isArray(arr) && arr.map(func)
+}
+
+
 
 // 切换 屏幕
 export function toggleScreen(bool: boolean): void {

@@ -4,6 +4,16 @@ export const TIME_FORMAT_Hs = 'HH:mm:ss'
 export const TIME_FORMAT_Second = `${TIME_FORMAT_Day} ${TIME_FORMAT_Hs}`
 
 
+/**
+ * 获取本月的最后一天的时间
+ * 精确到天 不精确时分秒
+ */
+export function getCurrentMonthLastDay(): Date {
+    let lastDay = new Date()
+    lastDay.setMonth(new Date().getMonth())
+    return lastDay
+}
+
 // 获取现在n年后的时间
 export function getFutureTime(n: number): Date {
     const now = new Date()

@@ -1,12 +1,13 @@
 {
   "name": "zero-pkg",
-  "version": "1.0.308",
+  "version": "1.0.309",
   "description": "小明同学的工具包",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "tsc",
+    "build": "webpack --config webpack.prod.js",
+    "ts": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
