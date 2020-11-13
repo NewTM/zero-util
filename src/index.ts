@@ -45,6 +45,28 @@ export function renderArray(arr: any[], func: (item: Obj, index: number) => any)
 }
 
 
+/**
+ *解析服务端接收到的cookies
+ * @param {String} str
+ * @return {{}对象} obj
+ */
+export function parseCookies(str: string): Obj {
+  const obj: Obj = {}
+  const arr = str.split(';')
+  arr.forEach((item) => {
+    const keyAndVal = item.split('=')
+    obj[keyAndVal[0].trim()] = keyAndVal[1]
+  })
+  return obj
+}
+
+
+//手机号码转换 133 5555 6666=>133****6666
+export function transTel(tel: string): string {
+  var reg = /^(\d{3})\d{4}(\d{4})$/;
+  return tel.replace(reg, "$1****$2");
+}
+
 
 // 切换 屏幕
 export function toggleScreen(bool: boolean): void {
