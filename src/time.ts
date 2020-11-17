@@ -4,6 +4,16 @@ export const TIME_FORMAT_Hs = 'HH:mm:ss'
 export const TIME_FORMAT_Second = `${TIME_FORMAT_Day} ${TIME_FORMAT_Hs}`
 
 
+
+
+/**
+ * 判断时间是否为当天
+ * @param date 时间对象
+ */
+export function isToday(date: Date) {
+    return date.setHours(0, 0, 0, 0) == new Date().setHours(0, 0, 0, 0)
+}
+
 /**
  * 获取本月的最后一天的时间
  * 精确到天 不精确时分秒
